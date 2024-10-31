@@ -1,9 +1,9 @@
  // finding the fractional knapsack...
- #include<bits/stdc++.h>
+ #include <bits/stdc++.h>
  using namespace std;
  bool compare_by_ratio(pair<int,int>&a, pair<int,int>&b)
  {
-     return a.first/a.second > b.first/b.second;
+     return (double)a.first/a.second > (double)b.first/b.second;
  }
  int main()
  {
@@ -28,8 +28,9 @@
              wt_of_snack = wt_of_snack - p[i].second;
              profit =  profit + p[i].first;
          }
-         else if(wt_of_snack > 0){
-             profit =  profit + ((p[i].first / p[i].second) * wt_of_snack);
+         else {
+             profit =  profit + p[i].first * (double(wt_of_snack) / p[i].second);
+             wt_of_snack=0;
          }
      }
      cout<<profit<<endl;
